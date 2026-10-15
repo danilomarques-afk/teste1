@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CLIPAGEM ACAERT 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --verde-claro: #76b72d;
+            --verde-medio: #289c4f;
+            --verde-profundo: #003c2d;
+            --vermelho-atencao: #ce2f28;
+            --claro-1: #f5f6db;
+            --claro-2: #c7dfcc;
+            --claro-3: #d9ebe6;
+            --claro-4: #faeaea;
+            --text-light: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.7);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--verde-profundo);
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: linear-gradient(135deg, var(--verde-profundo), #01241a);
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float 20s infinite ease-in-out alternate;
+        }
+
+        .blob1 {
+            width: 500px;
+            height: 500px;
+            background: var(--verde-medio);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .blob2 {
+            width: 600px;
+            height: 600px;
+            background: var(--verde-claro);
+            bottom: -200px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+        
+        .blob3 {
+            width: 400px;
+            height: 400px;
+            background: #006b4d;
+            top: 40%;
+            left: 30%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(100px, 50px) scale(1.1); }
+            100% { transform: translate(-50px, 150px) scale(0.9); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-weight: 700;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, var(--claro-1), var(--claro-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .category {
+            margin-bottom: 40px;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--claro-1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-link {
+            display: block;
+            text-decoration: none;
+            color: var(--text-light);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 15px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            min-height: 48px; 
+        }
+
+        .card-link::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: skewX(-25deg);
+            transition: all 0.7s ease;
+        }
+
+        .card-link:hover, .card-link:active {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), 0 0 15px rgba(118, 183, 45, 0.2);
+        }
+
+        .card-link:hover::before {
+            left: 200%;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--claro-1);
+            color: var(--verde-profundo);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            width: fit-content;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .card-url {
+            font-size: 0.85rem;
+            color: var(--verde-claro);
+            word-break: break-all;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            opacity: 0.9;
+        }
+
+        /* Estilo para os botões de download de PDF */
+        .pdf-buttons-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .pdf-btn {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: var(--verde-medio);
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .pdf-btn:hover {
+            background-color: var(--verde-claro);
+            color: var(--verde-profundo);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(118, 183, 45, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px;
+                padding: 20px;
+                border-radius: 16px;
+            }
+            .header h1 {
+                font-size: 1.6rem;
+            }
+            .card-title {
+                font-size: 1rem;
+            }
+            .card-link {
+                padding: 15px 20px;
+            }
+            .category-title {
+                font-size: 1.3rem;
+            }
+            .pdf-buttons-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>CLIPAGEM ACAERT 2026</h1>
+        </div>
+
+        <div class="category">
+            <div class="category-title">📢 Canais Oficiais ACAERT</div>
+
+            <a href="https://www.acaert.com.br/noticia/63110/acaert-e-mpsc-lancam-guia-de-boas-praticas-de-cobertura-jornalistica-de-casos-de-violencia-contra-mulheres" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">ACAERT</span>
+                <div class="card-title">ACAERT e MPSC lançam guia de boas práticas de cobertura jornalística de casos de violência contra mulheres</div>
+                <div class="card-url">🔗 acaert.com.br/...</div>
+            </a>
+
+            <a href="https://www.acaert.com.br/noticia/63242/guia-orienta-jornalistas-e-academicos-para-boas-praticas-de-comunicacao-de-casos-de-violencia-contra-mulheres" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">ACAERT</span>
+                <div class="card-title">Guia orienta jornalistas e acadêmicos para boas práticas de comunicação de casos de violência contra mulheres</div>
+                <div class="card-url">🔗 acaert.com.br/...</div>
+            </a>
+
+            <a href="https://rededenoticiasacaert.com.br/seguranca/guia-orienta-imprensa-sobre-violencia-contra-mulheres/" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">Portal Rede de Notícias</span>
+                <div class="card-title">Guia orienta imprensa sobre violência contra mulheres</div>
+                <div class="card-url">🔗 rededenoticiasacaert.com.br/...</div>
+            </a>
+
+            <a href="https://www.acaert.com.br/noticia/63246/guia-orienta-jornalistas-de-sc-para-comunicacao-adequada-de-casos-de-violencia-contra-mulheres" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">Matéria RNA</span>
+                <div class="card-title">Guia orienta jornalistas de SC para comunicação adequada de casos de violência contra mulheres</div>
+                <div class="card-url">🔗 acaert.com.br/...</div>
+            </a>
+
+            <a href="https://www.instagram.com/reel/DcMEyb_Cyeh/?utm_source=ig_web_copy_link&amp;igsh=NTc4MTIwNjQ2YQ==&amp;igsi=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">Instagram</span>
+                <div class="card-title">Guia de boas práticas orienta imprensa sobre violência contra mulheres</div>
+                <div class="card-url">🔗 instagram.com/...</div>
+            </a>
+        </div>
+
+        <div class="category">
+            <div class="category-title">📺 Televisão e Vídeos</div>
+
+            <a href="https://globoplay.globo.com/v/14876960/" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">NSC Notícias</span>
+                <div class="card-title">MPSC e ACAERT lançam guia para divulgação de notícias de violência contra a mulher</div>
+                <div class="card-url">🔗 globoplay.globo.com/...</div>
+            </a>
+
+            <a href="https://globoplay.globo.com/v/14875514/" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">Jornal do Almoço</span>
+                <div class="card-title">MPSC e ACAERT lançam guia para divulgação de notícias de violência contra a mulher</div>
+                <div class="card-url">🔗 globoplay.globo.com/...</div>
+            </a>
+
+            <a href="https://ndmais.com.br/video/mpsc-e-acaert-lancam-guia-para-cobertura-de-violencia-contra-mulheres/" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">Balanço Geral</span>
+                <div class="card-title">MPSC e ACAERT lançam guia para cobertura de violência contra mulheres</div>
+                <div class="card-url">🔗 ndmais.com.br/...</div>
+            </a>
+
+            <a href="https://ndmais.com.br/video/mpsc-e-acaert-lancam-guia-para-cobertura-responsavel-de-violencia-contra-mulheres/" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">SC no AR</span>
+                <div class="card-title">MPSC e ACAERT lançam guia para cobertura responsável de violência contra mulheres</div>
+                <div class="card-url">🔗 ndmais.com.br/...</div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=eciKwdGTYl8&amp;t=2718s" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">SCC/SBT</span>
+                <div class="card-title">Cobertura ao vivo: SCC/SBT</div>
+                <div class="card-url">🔗 youtube.com/...</div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=eciKwdGTYl8&amp;t=6060s" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">SCC/SBT</span>
+                <div class="card-title">Matéria: SCC/SBT</div>
+                <div class="card-url">🔗 youtube.com/...</div>
+            </a>
+        </div>
+
+        <div class="category">
+            <div class="category-title">🤝 Parceiros Institucionais</div>
+
+            <a href="https://www.mpsc.mp.br/w/mpsc-e-acaert-promovem-debate-sobre-cobertura-jornal%C3%ADstica-respons%C3%A1vel-de-casos-de-feminic%C3%ADdio" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">Ministério Público SC</span>
+                <div class="card-title">MPSC e ACAERT promovem debate sobre cobertura jornalística responsável de casos de feminicídio</div>
+                <div class="card-url">🔗 mpsc.mp.br/...</div>
+            </a>
+
+            <a href="https://www.mpsc.mp.br/w/noticias/lan%C3%A7amento-de-guia-provoca-reflex%C3%B5es-sobre-papel-da-imprensa-no-enfrentamento-ao-feminic%C3%ADdio" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">Ministério Público SC</span>
+                <div class="card-title">Lançamento de guia provoca reflexões sobre papel da imprensa no enfrentamento ao feminicídio</div>
+                <div class="card-url">🔗 mpsc.mp.br/...</div>
+            </a>
+
+            <a href="https://floripamanha.org/2026/08/mpsc-e-acaert-debatem-papel-da-imprensa-na-cobertura-de-feminicidios/" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">Floripa Amanhã</span>
+                <div class="card-title">MPSC e ACAERT debatem papel da imprensa na cobertura de feminicídios</div>
+                <div class="card-url">🔗 floripamanha.org/...</div>
+            </a>
+
+            <a href="https://www.tjsc.jus.br/web/imprensa/-/tjsc-prestigia-lancamento-de-guia-para-cobertura-jornalistica-da-violencia-contra-mulheres?redirect=%2F" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">Tribunal de Justiça SC</span>
+                <div class="card-title">TJSC prestigia lançamento de guia para cobertura jornalística da violência contra mulheres</div>
+                <div class="card-url">🔗 tjsc.jus.br/...</div>
+            </a>
+
+            <a href="https://amirt.com.br/guia-orienta-jornalistas-e-academicos-para-boas-praticas-de-comunicacao-de-casos-de-violencia-contra-mulheres/" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">AMIRT</span>
+                <div class="card-title">Guia orienta jornalistas e acadêmicos para boas práticas de comunicação de casos de violência contra mulheres</div>
+                <div class="card-url">🔗 amirt.com.br/...</div>
+            </a>
+        </div>
+
+        <div class="category">
+            <div class="category-title">🌐 Portais de Notícias</div>
+
+            <a href="https://acontecendoaqui.com.br/comunicacao/acaert-e-mpsc-lancam-guia-de-boas-praticas-para-cobertura-de-violencia-contra-mulheres/" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">Acontecendo Aqui</span>
+                <div class="card-title">ACAERT e MPSC lançam Guia de Boas Práticas Para Cobertura de Violência Contra Mulheres</div>
+                <div class="card-url">🔗 acontecendoaqui.com.br/...</div>
+            </a>
+
+            <a href="https://portalmakingof.com.br/guia-orienta-jornalistas-e-academicos-para-boas-praticas-de-comunicacao-de-casos-de-violencia-contra-mulheres/" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">Portal Making Of</span>
+                <div class="card-title">Guia orienta jornalistas e acadêmicos para boas práticas de comunicação de casos de violência contra mulheres</div>
+                <div class="card-url">🔗 portalmakingof.com.br/...</div>
+            </a>
+
+            <a href="https://www.nsctotal.com.br/seguranca/guia-focado-em-praticas-para-cobertura-jornalistica-de-casos-de-feminicidio-e-lancado-em-florianopolis" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">NSC Total</span>
+                <div class="card-title">Guia focado em práticas para cobertura jornalística de casos de feminicídio é lançado em Florianópolis</div>
+                <div class="card-url">🔗 nsctotal.com.br/...</div>
+            </a>
+
+            <a href="https://ndmais.com.br/video/mpsc-e-acaert-lancam-guia-para-cobertura-de-violencia-contra-mulheres/" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">NDMais</span>
+                <div class="card-title">MPSC e ACAERT lançam guia para cobertura de violência contra mulheres</div>
+                <div class="card-url">🔗 ndmais.com.br/...</div>
+            </a>
+
+            <a href="https://ndmais.com.br/justica/cobertura-jornalistica-de-feminicidio-e-temas-de-discussao-entre-jornalistas-e-comunicadores-no-mpsc/" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">NDMais</span>
+                <div class="card-title">Feminicídio e naturalização da violência são temas de discussão entre jornalistas e comunicadores no MPSC</div>
+                <div class="card-url">🔗 ndmais.com.br/...</div>
+            </a>
+
+            <a href="https://www.santacatarinaempauta.com.br/2026/08/15/mpsc-e-acaert-lancam-guia-para-orientar-cobertura-jornalistica-de-violencia-contra-mulheres/" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">SC em Pauta</span>
+                <div class="card-title">MPSC e ACAERT lançam guia para orientar cobertura jornalística de violência contra mulheres</div>
+                <div class="card-url">🔗 santacatarinaempauta.com.br/...</div>
+            </a>
+
+            <a href="https://scc10.com.br/cotidiano/seguranca/guia-para-jornalistas-propoe-novo-olhar-sobre-feminicidios-em-sc/" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">SCC10</span>
+                <div class="card-title">Guia para jornalistas propõe novo olhar sobre cobertura de feminicídios em SC</div>
+                <div class="card-url">🔗 scc10.com.br/...</div>
+            </a>
+
+            <a href="https://tudoradio.com/noticias/ver/35294-guia-lancado-pela-acaert-e-mpsc-orienta-cobertura-jornalistica-sobre-violencia-contra-mulheres" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">TudoRádio</span>
+                <div class="card-title">Guia lançado pela ACAERT e MPSC orienta cobertura jornalística sobre violência contra mulheres</div>
+                <div class="card-url">🔗 tudoradio.com/...</div>
+            </a>
+
+            <a href="https://upiara.com.br/noticias/mpsc-e-acaert-debatem-papel-da-imprensa-na-cobertura-de-feminicidios/" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">Blog do Upiara</span>
+                <div class="card-title">MPSC e ACAERT debatem papel da imprensa na cobertura de feminicídios</div>
+                <div class="card-url">🔗 upiara.com.br/...</div>
+            </a>
+
+            <a href="https://www.oimagem.com.br/noticia/16678-justica_mpsc_e_acaert_lancam_guia_para_cobertura_de_casos_de_violencia_contra_mulheres" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">Imagem</span>
+                <div class="card-title">MPSC e ACAERT lançam guia para cobertura de casos de violência contra mulheres</div>
+                <div class="card-url">🔗 oimagem.com.br/...</div>
+            </a>
+
+            <a href="https://www.lagesdiario.com.br/2026/08/guia-orienta-jornalistas-sobre-cobertura-de-casos-violencia-contra-mulheres-em-sc.html" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">Lages Diário</span>
+                <div class="card-title">Guia orienta jornalistas sobre cobertura de casos de violência contra mulheres em SC</div>
+                <div class="card-url">🔗 lagesdiario.com.br/...</div>
+            </a>
+        </div>
+
+        <div class="category">
+            <div class="category-title">📻 Emissoras Associadas</div>
+
+            <a href="https://radionova.fm.br/noticia/93604" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">Rádio Nova FM</span>
+                <div class="card-title">MPSC ACAERT lançaram guia para orientar e cobertura jornalística de casos de violência contra mulheres</div>
+                <div class="card-url">🔗 radionova.fm.br/...</div>
+            </a>
+
+            <a href="https://wh3.com.br/noticia/277773/mpsc-e-acaert-promovem-debate-sobre-cobertura-jornalistica-responsavel-de-casos-de-feminicidio.html" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">Rede Wh3</span>
+                <div class="card-title">MPSC e ACAERT promovem debate sobre cobertura jornalística responsável de casos de feminicídio</div>
+                <div class="card-url">🔗 wh3.com.br/...</div>
+            </a>
+
+            <a href="https://rco.com.br/noticias/seguranca/mpsc-e-acaert-reforcam-papel-do-jornalismo-no-enfrentamento-a-violencia-contra-mulheres" target="_blank" rel="noopener noreferrer" class="card-link">
+                <span class="badge">RCO</span>
+                <div class="card-title">MPSC e ACAERT reforçam papel do jornalismo no enfrentamento à violência contra mulheres</div>
+                <div class="card-url">🔗 rco.com.br/...</div>
+            </a>
+        </div>
+
+        <div class="category">
+            <div class="category-title">📄 Material Impresso (PDFs)</div>
+            <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 15px;">Baixe os arquivos originais publicados:</p>
+
+            <div class="pdf-buttons-container">
+                <a href="materia(1).pdf" download="materia(1).pdf" class="pdf-btn">
+                    📥 Baixar Matéria (PDF)
+                </a>
+                <a href="nota(1).pdf" download="nota(1).pdf" class="pdf-btn">
+                    📥 Baixar Nota (PDF)
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
